@@ -1,0 +1,142 @@
+/* No transitions or keyframe animations (per project brief). */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Sized by script to match scaled #stage so the collage fills the viewport */
+#stage-scaler {
+    flex-shrink: 0;
+    overflow: hidden;
+    line-height: 0;
+}
+
+#stage {
+    position: relative;
+    width: 1665px;
+    height: 738px;
+    background: #000000;
+    transform-origin: 0 0;
+}
+
+#main-title {
+    position: absolute;
+    left: 754px;
+    top: 45px;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    font-family: "Libre Bodoni", "Bodoni MT", Didot, "Times New Roman", serif;
+    font-size: 67px;
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    text-align: center;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.window {
+    position: absolute;
+    z-index: 2;
+}
+
+/* Lift the hovered pane so its tooltip stacks above every other window and the title */
+.window:hover {
+    z-index: 100000;
+}
+
+.window-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    overflow: hidden;
+}
+
+.window-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/*
+ * Middle + right columns pulled together (~2px gaps). Left column unchanged.
+ * Title keep-out preserved; #win-11 clears #win-4; #win-16 / #win-19 / #win-17 staggered so nothing overlaps.
+ */
+#win-1  { left: 147px;  top: 147px;  width: 108px; height: 108px; }
+#win-2  { left: 257px;  top: 141px;  width: 116px; height: 161px; }
+#win-3  { left: 375px;  top: 120px;  width: 222px; height: 98px; }
+#win-4  { left: 599px;  top: 105px;  width: 94px;  height: 187px; }
+
+#win-5  { left: 113px;  top: 288px;  width: 118px; height: 143px; }
+#win-6  { left: 288px;  top: 308px;  width: 86px;  height: 86px; }
+#win-7  { left: 376px;  top: 266px;  width: 210px; height: 195px; }
+
+#win-8  { left: 109px;  top: 433px;  width: 102px; height: 222px; }
+#win-9  { left: 222px;  top: 457px;  width: 108px; height: 183px; }
+#win-10 { left: 332px;  top: 463px;  width: 173px; height: 161px; }
+
+#win-11 { left: 697px;  top: 211px;  width: 434px; height: 128px; }
+#win-12 { left: 736px;  top: 341px;  width: 128px; height: 195px; }
+#win-13 { left: 866px;  top: 376px;  width: 102px; height: 102px; }
+
+#win-14 { left: 1133px; top: 60px;   width: 131px; height: 173px; }
+#win-15 { left: 1266px; top: 56px;   width: 277px; height: 112px; }
+#win-16 { left: 1195px; top: 278px;  width: 79px;  height: 202px; }
+
+#win-17 { left: 970px;  top: 482px;  width: 405px; height: 98px; }
+#win-18 { left: 1377px; top: 582px;  width: 139px; height: 139px; }
+#win-19 { left: 1278px; top: 274px;  width: 86px;  height: 202px; }
+#win-20 { left: 1518px; top: 422px;  width: 131px; height: 183px; }
+
+/* Tooltip — above all panes while visible (parent .window:hover raises stacking context) */
+.tooltip {
+    display: none;
+    position: fixed;
+    z-index: 100001;
+    width: 220px;
+    padding: 10px;
+    background: #1a1a1a;
+    border: 1px solid #555;
+    color: #f0f0f0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 13px;
+    line-height: 1.35;
+    text-align: left;
+    pointer-events: none;
+    box-shadow: 4px 4px 0 #000;
+}
+
+.tooltip.is-visible {
+    display: block;
+}
+
+.tooltip-gif {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    background: #000;
+}
+
+.tooltip p {
+    margin: 0;
+}
